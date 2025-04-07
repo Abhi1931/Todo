@@ -5,6 +5,7 @@ import com.iguroo.todo.todo.DTO.TodoDTO;
 import com.iguroo.todo.todo.Entity.Todo;
 import com.iguroo.todo.todo.Repository.TodoRepo;
 import com.iguroo.todo.todo.Service.TodoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class TodoController {
     }
 
     @PostMapping("/{user_id}")
-    public ResponseEntity<TodoDTO> createTodo(@PathVariable Long user_id, @RequestBody TodoDTO todoDTO) {
+    public ResponseEntity<TodoDTO> createTodo(@PathVariable Long user_id, @Valid @RequestBody TodoDTO todoDTO) {
         if (user_id == null) {
             throw new IllegalArgumentException("User ID must not be null in path variable");
         }

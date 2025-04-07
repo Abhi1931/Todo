@@ -3,6 +3,7 @@ package com.iguroo.todo.todo.Controller;
 import com.iguroo.todo.todo.DTO.LoginDTO;
 import com.iguroo.todo.todo.DTO.UserDTO;
 import com.iguroo.todo.todo.Service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<UserDTO> registerUser(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> registerUser(@Valid @RequestBody UserDTO userDTO) {
         return ResponseEntity.ok(userService.registerUser(userDTO));
     }
 
